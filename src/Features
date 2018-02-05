@@ -1,0 +1,7 @@
+1) The user can set the speed of number generation
+2) The user can set the amount of generated numbers
+3) The user can write the number
+4) The user can stop the generation
+5) The user can view the last generated numbers (before using 4)
+6) The user can see the ratio between right and wrong given answers
+7) The user can reset the program
