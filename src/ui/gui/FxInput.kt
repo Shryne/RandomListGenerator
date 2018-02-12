@@ -1,9 +1,7 @@
 package ui.gui
 
-import javafx.event.EventTarget
-import javafx.scene.layout.Pane
+import javafx.scene.control.TextField
 import logic.sequence.InputClient
-import tornadofx.add
 
 /**
  * - mutable
@@ -11,10 +9,8 @@ import tornadofx.add
  * @param
  * @return
  */
-class FxInput(inputClient: InputClient): FxWrapper {
-    private val numberField = NumberField {
+class FxInput(inputClient: InputClient, textField: TextField) {
+    private val numberField = NumberField(textField) {
         inputClient.nextInput(it)
     }
-
-    override val pane: Pane = numberField.pane
 }

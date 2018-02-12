@@ -1,5 +1,8 @@
 package ui.gui
 
+import javafx.scene.control.Button
+import javafx.scene.control.Label
+import javafx.scene.control.TextField
 import javafx.scene.layout.Pane
 import logic.basis.RandomListImpl
 import logic.sequence.SequenceImpl
@@ -9,11 +12,37 @@ import tornadofx.*
 /**
  *
  */
-class MainView: View() {
+class MainView : View() {
     override val root: Pane by fxml("view.fxml")
+    // Unfortunate that I have to define the gui elements here for the using classes
+    private val sequenceLabel: Label by fxid("sequenceLabel")
+    private val inputField: TextField by fxid("inputField")
+    private val timedInputStop: Button by fxid("timedInputStop")
+    private val timedInputSlower: Button by fxid("timedInputSlower")
+    private val timedInputFaster: Button by fxid("timedInputFaster")
+
+    init {
+        FxInput(
+                FxTimedInput(
+                        TimedInputImpl(
+                                500,
+                                FxSequence(
+                                        SequenceImpl(
+                                                RandomListImpl(5)
+                                        ),
+                                        sequenceLabel
+                                )
+                        ),
+                        timedInputStop,
+                        timedInputSlower,
+                        timedInputFaster
+                ),
+                inputField
+        )
+    }
 }
 
-class MainViewStyle: Stylesheet() {
+class MainViewStyle : Stylesheet() {
     companion object {
         val normalButton by cssclass()
         val normalTextField by cssclass()

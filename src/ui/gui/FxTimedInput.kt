@@ -1,6 +1,7 @@
 package ui.gui
 
 import javafx.event.EventTarget
+import javafx.scene.control.Button
 import javafx.scene.layout.FlowPane
 import javafx.scene.layout.Pane
 import javafx.scene.layout.TilePane
@@ -14,16 +15,7 @@ import tornadofx.button
  * @param
  * @return
  */
-class FxTimedInput(timedInput: TimedInput) : FxWrapper, TimedInput by timedInput {
-    override val pane: Pane = TilePane().apply {
-        button("S") {
+class FxTimedInput(timedInput: TimedInput, StopButton: Button, SlowerButton: Button, FasterButton: Button)
+    : TimedInput by timedInput {
 
-        }
-        button("U") {
-
-        }
-        button("D") {
-
-        }
-    }
 }

@@ -13,12 +13,10 @@ import tornadofx.onChange
  * @param
  * @return
  */
-class NumberField(onChange: (Int) -> Unit): FxWrapper {
+class NumberField(textField: TextField, onChange: (Int) -> Unit) {
     companion object {
         private val numberRegex = Regex("[0-9]")
     }
-
-    private val textField: TextField = TextField()
 
     init {
         textField.textProperty().onChange {
@@ -28,10 +26,5 @@ class NumberField(onChange: (Int) -> Unit): FxWrapper {
             textField.text = ""
         }
     }
-
-    override val pane: Pane = Pane().apply {
-        add(textField)
-    }
-
     private fun String.isInt() = matches(numberRegex)
 }
