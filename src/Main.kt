@@ -1,18 +1,15 @@
 import javafx.application.Application
-import javafx.stage.Stage
+import tornadofx.*
+import ui.gui.MainView
+import ui.gui.MainViewStyle
 
-
-class Main: Application() {
-    override fun start(primaryStage: Stage?) {
-        primaryStage!!.title = "Welcome"
-        primaryStage.show()
-    }
-
-    companion object {
-        @JvmStatic
-        fun main(args: Array<String>) {
-            launch(Main::class.java)
-        }
+// Do I really have to add all style classes here?
+class Main : App(MainView::class, MainViewStyle::class) {
+    init {
+        reloadStylesheetsOnFocus()
     }
 }
 
+fun main(args: Array<String>) {
+    Application.launch(Main::class.java, *args)
+}

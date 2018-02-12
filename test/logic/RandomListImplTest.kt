@@ -1,8 +1,9 @@
 package logic
 
-import org.junit.jupiter.api.Assertions.*
+import logic.basis.RandomListImpl
 import org.junit.jupiter.api.Test
-import java.util.*
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 /**
  * - mutable
@@ -34,6 +35,17 @@ internal class RandomListImplTest {
                 listOf(newList.first) + additionalElements.elements.drop(1),
                 newList.elements
         )
+    }
 
+    @Test
+    fun rightRange() {
+        with(RandomListImpl(100)) {
+            assertTrue(
+                    elements.all {
+                        (0 <= it) and (it < 10)
+                    },
+                    toString()
+            )
+        }
     }
 }
