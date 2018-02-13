@@ -28,7 +28,7 @@ class MainView : View() {
                                 500,
                                 FxSequence(
                                         SequenceImpl(
-                                                RandomListImpl(5)
+                                                RandomListImpl(1)
                                         ),
                                         sequenceLabel
                                 )

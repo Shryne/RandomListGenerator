@@ -6,6 +6,7 @@ import javafx.scene.control.TextField
 import javafx.scene.layout.Pane
 import logic.sequence.Sequence
 import tornadofx.add
+import tornadofx.runLater
 
 /**
  * - mutable
@@ -20,11 +21,15 @@ class FxSequence(private val sequence: Sequence, private val label: Label) : Seq
 
     override fun nextInput(input: Int) {
         sequence.nextInput(input)
-        label.text = sequence.randomList.last.toString()
+        runLater {
+            label.text = sequence.randomList.last.toString()
+        }
     }
 
     override fun tick() {
         sequence.tick()
-        label.text = sequence.randomList.last.toString()
+        runLater {
+            label.text = sequence.randomList.last.toString()
+        }
     }
 }

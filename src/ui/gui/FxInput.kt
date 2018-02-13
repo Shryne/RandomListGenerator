@@ -10,7 +10,7 @@ import logic.sequence.InputClient
  * @return
  */
 class FxInput(inputClient: InputClient, textField: TextField) {
-    private val numberField = NumberField(textField) {
+    private val numberField = DigitField(textField) {
         inputClient.nextInput(it)
     }
 }

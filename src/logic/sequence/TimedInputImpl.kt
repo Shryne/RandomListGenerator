@@ -13,7 +13,7 @@ class TimedInputImpl<C>(var tickTime: Long, private val timedInputClient: C) : T
               C : InputClient {
 
     private var task = timerTask { timedInputClient.tick() }
-    private val timer = Timer()
+    private val timer = Timer(true)
 
     override fun nextInput(input: Int) {
         task.cancel()
