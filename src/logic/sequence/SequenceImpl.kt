@@ -5,12 +5,14 @@ import logic.basis.RandomList
 /**
  *
  */
-class SequenceImpl(randomList: RandomList)
-    : Sequence{
+class SequenceImpl(randomList: RandomList) : Sequence {
 
+    private var wrongTimes = 0
+    private var rightTimes = 0
     override var randomList = randomList
         private set
-    val correctInputPercentage: Double get() = TODO()
+    override val correctInputPercentage: Double
+        get() = (rightTimes.toDouble() / (wrongTimes + rightTimes).toDouble())
 
     /**
      * This method is synchronized, because the calculation of the inputPercantage could be wrong, if two threads use
@@ -19,9 +21,9 @@ class SequenceImpl(randomList: RandomList)
     override fun nextInput(input: Int) {
         synchronized(this) {
             if (input == randomList.first) {
-                // TODO
+                rightTimes++
             } else {
-                // TODO
+                wrongTimes++
             }
             randomList = randomList.next()
         }
@@ -33,7 +35,7 @@ class SequenceImpl(randomList: RandomList)
      */
     override fun tick() {
         synchronized(this) {
-            // TODO percentage stuff
+            wrongTimes++
             randomList = randomList.next()
         }
     }

@@ -25,7 +25,7 @@ class MainView : View() {
         FxInput(
                 FxTimedInput(
                         TimedInputImpl(
-                                500,
+                                1000,
                                 FxSequence(
                                         SequenceImpl(
                                                 RandomListImpl(1)

@@ -1,11 +1,7 @@
 package ui.gui
 
-import javafx.event.EventTarget
-import javafx.scene.Node
 import javafx.scene.control.TextField
 import javafx.scene.input.KeyEvent
-import javafx.scene.layout.Pane
-import tornadofx.add
 import tornadofx.onChange
 
 /**

@@ -1,4 +1,5 @@
 import javafx.application.Application
+import javafx.stage.Stage
 import tornadofx.*
 import ui.gui.MainView
 import ui.gui.MainViewStyle
@@ -7,6 +8,11 @@ import ui.gui.MainViewStyle
 class Main : App(MainView::class, MainViewStyle::class) {
     init {
         reloadStylesheetsOnFocus()
+    }
+
+    override fun start(stage: Stage) {
+        stage.isResizable = false
+        super.start(stage)
     }
 }
 
