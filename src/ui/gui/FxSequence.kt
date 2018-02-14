@@ -14,22 +14,37 @@ import tornadofx.runLater
  * @param
  * @return
  */
-class FxSequence(private val sequence: Sequence, private val label: Label) : Sequence by sequence {
+class FxSequence(
+        private val sequence: Sequence,
+        private val sequenceLabel: Label,
+        private val percentageLabel: Label)
+    : Sequence by sequence {
+
+    companion object {
+        private const val LABEL_TEXT = "Right:"
+    }
+
     init {
-        label.text = sequence.randomList.last.toString()
+        sequenceLabel.text = sequence.randomList.last.toString()
+        percentageLabel.text = "$LABEL_TEXT 100 %"
     }
 
     override fun nextInput(input: Int) {
         sequence.nextInput(input)
         runLater {
-            label.text = sequence.randomList.last.toString()
+            sequenceLabel.text = sequence.randomList.last.toString()
+            percentageLabel.text = sequence.correctInputPercentage.percent
         }
     }
 
     override fun tick() {
         sequence.tick()
         runLater {
-            label.text = sequence.randomList.last.toString()
+            sequenceLabel.text = sequence.randomList.last.toString()
+            percentageLabel.text = sequence.correctInputPercentage.percent
         }
     }
+
+    private val Double.percent: String
+        get() = "${String.format("%.2f", this * 100)} %"
 }

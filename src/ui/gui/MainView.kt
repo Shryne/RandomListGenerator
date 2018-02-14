@@ -16,6 +16,7 @@ class MainView : View() {
     override val root: Pane by fxml("view.fxml")
     // Unfortunate that I have to define the gui elements here for the using classes
     private val sequenceLabel: Label by fxid("sequenceLabel")
+    private val percentageLabel: Label by fxid("percentage")
     private val inputField: TextField by fxid("inputField")
     private val timedInputStop: Button by fxid("timedInputStop")
     private val timedInputSlower: Button by fxid("timedInputSlower")
@@ -30,7 +31,8 @@ class MainView : View() {
                                         SequenceImpl(
                                                 RandomListImpl(1)
                                         ),
-                                        sequenceLabel
+                                        sequenceLabel,
+                                        percentageLabel
                                 )
                         ),
                         timedInputStop,
